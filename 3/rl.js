@@ -12,7 +12,7 @@ var ACTORS = 10;
 var map;
 
 // the ascii display, as a 2d array of characters
-var screen;
+var asciidisplay;
 
 // a list of all actors, 0 is the player
 var player;
@@ -34,11 +34,11 @@ function create() {
     // initialize map
     initMap();
 
-    // initialize screen
-    screen = [];
+    // initialize ascii display
+    asciidisplay = [];
     for (var y = 0; y < ROWS; y++) {
         var newRow = [];
-        screen.push(newRow);
+        asciidisplay.push(newRow);
         for (var x = 0; x < COLS; x++)
             newRow.push(initCell('', x, y));
     }
@@ -78,7 +78,7 @@ function initMap() {
 function drawMap() {
     for (var y = 0; y < ROWS; y++)
         for (var x = 0; x < COLS; x++)
-            screen[y][x].content = map[y][x];
+            asciidisplay[y][x].content = map[y][x];
 }
 
 function randomInt(max) {
@@ -115,7 +115,7 @@ function initActors() {
 function drawActors() {
     for (var a in actorList) {
         if (actorList[a].hp > 0) 
-            screen[actorList[a].y][actorList[a].x].content = a == 0 ? '' + player.hp : 'e';
+            asciidisplay[actorList[a].y][actorList[a].x].content = a == 0 ? '' + player.hp : 'e';
     }
 }
 
