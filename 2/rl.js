@@ -12,7 +12,7 @@ var ACTORS = 10;
 var map;
 
 // the ascii display, as a 2d array of characters
-var screen;
+var asciidisplay;
 
 // initialize phaser, call create() once done
 var game = new Phaser.Game(COLS * FONT * 0.6, ROWS * FONT, Phaser.AUTO, null, {
@@ -26,11 +26,11 @@ function create() {
     // initialize map
     initMap();
     
-    // initialize screen
-    screen = [];
+    // initialize ascii display
+    asciidisplay = [];
     for (var y=0; y<ROWS; y++) {
         var newRow = [];
-        screen.push(newRow);
+        asciidisplay.push(newRow);
         for (var x=0;x<COLS;x++)
             newRow.push( initCell('', x, y) );
     }
@@ -61,7 +61,7 @@ function initMap() {
 function drawMap() {
     for (var y = 0; y < ROWS; y++)
         for (var x = 0; x < COLS; x++)
-            screen[y][x].content = map[y][x];
+            asciidisplay[y][x].content = map[y][x];
 }
 
 function onKeyUp(event) {
